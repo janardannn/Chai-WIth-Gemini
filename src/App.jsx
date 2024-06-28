@@ -20,7 +20,7 @@ function App() {
       return text;
     } catch (error) {
       console.error("Error generating content:", error);
-      return "Sorry, I couldn't generate a response.";
+      return "Sorry, I couldn't generate a response. Please adjust your api key or add your own model.";
     }
   }
 
