@@ -41,6 +41,8 @@ This project is a React-based chatbot application integrated with Google Generat
 ## Contributing
 - Contributions are welcome! Please fork the repository and create a pull request with your improvements.
 
+## Author
+- [Prakhar deep](https://github.com/princeprakhar)
 ## License
 - This project is licensed under the `MIT License` - see the LICENSE file for details.
 
