@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import { GoogleGenerativeAI } from "@google/generative-ai";
-
+import Footer from './component/Footer';
 const genAI = new GoogleGenerativeAI(import.meta.env.VITE_API_KEY);
 
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
@@ -20,18 +20,13 @@ function App() {
       return text;
     } catch (error) {
       console.error("Error generating content:", error);
-      return "Sorry, I couldn't generate a response. Please adjust your api key or add your own model.";
+      return "Sorry, I couldn't generate a response. Please adjust your API key or add your own model.";
     }
   }
 
   const formatAIResponse = (response) => {
     const paragraphs = response.split('\n\n');
-
-    // Format each paragraph with AI prefix
-    const formattedResponse = paragraphs.map((paragraph, index) => {
-      return `${paragraph}`;
-    }).join('\n\n');
-
+    const formattedResponse = paragraphs.map((paragraph, index) => `${paragraph}`).join('\n\n');
     return formattedResponse;
   };
 
@@ -64,36 +59,38 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <div className='font-bold text-3xl text-center flex mx-80 px-20 my-20 justify-center'>
+    <>
+    <div className='container mx-auto p-4 min-h-screen'>
+      <div className='font-bold text-3xl text-center flex justify-center my-10'>
         <span>Chai with </span>
-        <span className='bg-red-500 box-border rounded-lg p-1'>Gemini</span>
+        <span className='bg-red-500 rounded-lg p-1 mx-2'>Gemini</span>
       </div>
-      <div className='mx-80'>
+      <div className='max-w-4xl mx-auto'>
         <textarea
-          className='w-full md:w-full h-40 p-2 border rounded-lg'
+          className='w-full h-40 p-2 border rounded-lg'
           value={inputText}
           onChange={handleInputChange}
           placeholder='Type your message here...'
         ></textarea>
-        <button
-          className='mt-2 p-2 bg-blue-500 text-white rounded-lg'
-          onClick={handleSubmit}
-          disabled={loading}
-        >
-          Submit
-        </button>
-        <button
-          className='mt-2 p-2 mx-8 bg-blue-500 text-white rounded-lg'
-          onClick={() => setMessages([])}
-          disabled={loading}
-        >
-          New Message
-        </button>
-
+        <div className='flex flex-wrap justify-center mt-2'>
+          <button
+            className='p-2 bg-blue-500 text-white rounded-lg m-2'
+            onClick={handleSubmit}
+            disabled={loading}
+          >
+            Submit
+          </button>
+          <button
+            className='p-2 bg-blue-500 text-white rounded-lg m-2'
+            onClick={() => setMessages([])}
+            disabled={loading}
+          >
+            New Message
+          </button>
+        </div>
         <div className='mt-4'>
           {messages.map((msg, index) => (
-            <div key={index} className={`p-2 my-2 bg-gray-600 rounded-lg text-white ${msg.sender === 'ai' ? 'bg-gray-200' : 'bg-gray-200'}`}>
+            <div key={index} className={`p-2 my-2 rounded-lg ${msg.sender === 'ai' ? 'bg-gray-200' : 'bg-gray-600 text-white'}`}>
               <strong>{msg.sender === 'ai' ? 'AI: ' : 'You: '}</strong>{msg.text}
             </div>
           ))}
@@ -101,6 +98,9 @@ function App() {
         </div>
       </div>
     </div>
+    
+    <Footer />
+    </>
   );
 }
 
