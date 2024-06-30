@@ -90,11 +90,11 @@ function App() {
         </div>
         <div className='mt-4'>
           {messages.map((msg, index) => (
-            <div key={index} className={`p-2 my-2 rounded-lg ${msg.sender === 'ai' ? 'bg-gray-200' : 'bg-gray-600 text-white'}`}>
+            <div key={index} className={`p-2 my-2 rounded-lg ${msg.sender === 'ai' ? 'bg-gray-600' : 'bg-gray-600 text-white'}`}>
               <strong>{msg.sender === 'ai' ? 'AI: ' : 'You: '}</strong>{msg.text}
             </div>
           ))}
-          {loading && <div className='p-2 my-2 bg-yellow-200 rounded-lg text-black'>Generating response...</div>}
+          {loading && <div className='p-2 my-2 bg-slate-500 rounded-lg text-black'>Generating response...✨</div>}
         </div>
       </div>
     </div>
