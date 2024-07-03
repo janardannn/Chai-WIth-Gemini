@@ -1,4 +1,4 @@
-# Chat With Gemini
+# Chai With Gemini
 
 This project is a React-based chatbot application integrated with Google Generative AI, specifically using the Gemini model. It allows users to interact with an AI-powered chatbot that responds to their input in a structured format.
 
