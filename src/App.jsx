@@ -37,6 +37,7 @@ function ChatResponse({ responseText }) {
           ),
         }}
       >
+        
         {responseText}
       </ReactMarkdown>
     </div>
@@ -119,7 +120,7 @@ function App() {
           </div>
           <div className='mt-4'>
             {messages.map((msg, index) => (
-              <div key={index} className={`p-2 my-2 rounded-lg ${msg.sender === 'ai' ? 'bg-gray-600' : 'bg-gray-600 text-white'}`}>
+              <div key={index} className={`p-2 my-2 rounded-lg ${msg.sender === 'ai' ? 'bg-slate-500' : 'bg-gray-600 text-white'}`}>
                 <strong>{msg.sender === 'ai' ? 'AI: ' : 'You: '}</strong>
                 {msg.sender === 'ai' ? (
                   <ChatResponse responseText={msg.text}/>
